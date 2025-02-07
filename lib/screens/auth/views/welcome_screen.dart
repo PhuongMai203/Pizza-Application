@@ -46,7 +46,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Theme.of(context).colorScheme.tertiary
+                    color: Colors.indigo.shade200,
                   ),
                 ),
               ),
@@ -57,7 +57,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
                   width: MediaQuery.of(context).size.width/1.3,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Theme.of(context).colorScheme.primary
+                    color: Colors.indigo.shade100,
                   ),
                 ),
               ),

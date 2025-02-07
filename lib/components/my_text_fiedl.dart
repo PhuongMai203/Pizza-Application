@@ -50,10 +50,10 @@ class MyTextField extends StatelessWidget {
 					borderRadius: BorderRadius.circular(20),
 					borderSide: BorderSide(color: Theme.of(context).colorScheme.secondary),
 				),
-				fillColor: Colors.grey.shade200,
+				fillColor: Colors.lightBlueAccent,
 				filled: true,
 				hintText: hintText,
-				hintStyle: TextStyle(color: Colors.grey[500]),
+				hintStyle: TextStyle(color: Colors.lightBlueAccent),
 				errorText: errorMsg,
 			),
     );
