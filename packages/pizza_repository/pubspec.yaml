@@ -1,4 +1,4 @@
-name: user_repository
+name: pizza_repository
 description: "The Repo handles pizzas"
 publish_to: 'none' 
 version: 1.0.0+1
@@ -15,6 +15,7 @@ dependencies:
   # cupertino_icons: ^1.0.8
   # rxdart: ^0.28.0
   path: ^1.9.0
+  cloud_firestore: ^5.6.3
 
 dev_dependencies:
   flutter_test:

@@ -12,9 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return RepositoryProvider<AuthenticationBloc>(
       create: (context) => AuthenticationBloc(
-        userRepository: userRepository,
+        userRepository: userRepository
       ),
-      child: MyAppView(),
+      child: const MyAppView(),
     );
   }
 }

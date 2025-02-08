@@ -83,4 +83,5 @@ class DefaultFirebaseOptions {
     authDomain: 'pizza-delivery-86de3.firebaseapp.com',
     storageBucket: 'pizza-delivery-86de3.firebasestorage.app',
   );
+
 }
