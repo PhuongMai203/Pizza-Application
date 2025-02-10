@@ -2,15 +2,15 @@ import '../entities/entities.dart';
 import 'models.dart';
 
 class Pizza {
-  String pizzaId;
-  String picture;
-  bool isVeg;
-  int spicy;
-  String name;
-  String description;
-  int price;
-  int discount;
-  Macros macros;
+  final String pizzaId;
+  final String picture;
+  final bool isVeg;
+  final int spicy;
+  final String name;
+  final String description;
+  final int price;
+  final int discount;
+  final Macros macros;
 
   Pizza({
     required this.pizzaId,
@@ -34,7 +34,7 @@ class Pizza {
       description: description,
       price: price,
       discount: discount,
-      macros: macros,
+      macros: macros.toEntity(),
     );
   }
 
@@ -48,7 +48,7 @@ class Pizza {
       description: entity.description,
       price: entity.price,
       discount: entity.discount,
-      macros: entity.macros,
+      macros: Macros.fromEntity(entity.macros),
     );
   }
 }

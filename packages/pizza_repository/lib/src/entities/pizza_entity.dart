@@ -1,17 +1,16 @@
-
-
+import 'package:pizza_repository/src/entities/macros_entity.dart';
 import '../models/models.dart';
 
 class PizzaEntity {
-  String pizzaId;
-  String picture;
-  bool isVeg;
-  int spicy;
-  String name;
-  String description;
-  int price;
-  int discount;
-  Macros macros;
+  final String pizzaId;
+  final String picture;
+  final bool isVeg;
+  final int spicy;
+  final String name;
+  final String description;
+  final int price;
+  final int discount;
+  final MacrosEntity macros;
 
   PizzaEntity({
     required this.pizzaId,
@@ -35,22 +34,21 @@ class PizzaEntity {
       'description': description,
       'price': price,
       'discount': discount,
-      'macros': macros.toEntity().toDocument(),
+      'macros': macros.toDocument(),
     };
   }
 
   static PizzaEntity fromDocument(Map<String, dynamic> doc) {
-    var MacrosEntity;
     return PizzaEntity(
-      pizzaId: doc['pizzaId'],
-      picture: doc['picture'],
-      isVeg: doc['isVeg'],
-      spicy: doc['spicy'],
-      name: doc['name'],
-      description: doc['description'],
-      price: doc['price'],
-      discount: doc['discount'],
-      macros: Macros.fromEntity(MacrosEntity.fromDocument(doc['macros'])),
+      pizzaId: doc['pizzaId'] ?? '',
+      picture: doc['picture'] ?? '',
+      isVeg: doc['isVeg'] ?? false,
+      spicy: doc['spicy'] ?? 0,
+      name: doc['name'] ?? '',
+      description: doc['description'] ?? '',
+      price: doc['price'] ?? 0,
+      discount: doc['discount'] ?? 0,
+      macros: MacrosEntity.fromDocument(doc['macros'] ?? {}),
     );
   }
 }

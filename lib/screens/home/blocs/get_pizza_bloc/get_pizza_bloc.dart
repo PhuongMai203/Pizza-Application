@@ -10,18 +10,18 @@ class GetPizzaBloc extends Bloc<GetPizzaEvent, GetPizzaState> {
 
   GetPizzaBloc(this._pizzaRepo) : super(GetPizzaInitial()) {
    on<GetPizza>((event, emit) async {
-  print("GetPizza event received!"); // Log kiểm tra
+  print("GetPizza event received!"); // Kiểm tra sự kiện được nhận
 
   emit(GetPizzaLoading());
   try {
     List<Pizza> pizzas = await _pizzaRepo.getPizzas();
-    print("Fetched pizzas: ${pizzas.length}"); // Log số lượng pizza lấy được
-
+    print("Fetched pizzas: ${pizzas.length}"); // Kiểm tra dữ liệu trả về
     emit(GetPizzaSuccess(pizzas));
   } catch (e) {
-    print("GetPizza failed: $e"); // Log lỗi nếu có
+    print("Error fetching pizzas: $e"); // In lỗi nếu có
     emit(GetPizzaFailure());
   }
 });
+
   }
 }
