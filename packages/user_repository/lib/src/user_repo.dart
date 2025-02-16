@@ -9,5 +9,7 @@ abstract class UserRepository {
 
 	Future<void> signIn(String email, String password);
 
+	Future<void> sendPasswordResetOTP(String email);
+
 	Future<void> logOut();
 }

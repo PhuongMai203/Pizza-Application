@@ -67,5 +67,13 @@ class FirebaseUserRepo implements UserRepository {
       log(e.toString());
       rethrow;
     }
-  } 
+  }
+  // Phương thức gửi OTP đặt lại mật khẩu qua email
+  Future<void> sendPasswordResetOTP(String email) async {
+    try {
+      await _firebaseAuth.sendPasswordResetEmail(email: email);
+    } catch (e) {
+      throw Exception("Failed to send reset password email: ${e.toString()}");
+    }
+  }
 }

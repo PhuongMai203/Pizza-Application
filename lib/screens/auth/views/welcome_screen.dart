@@ -3,7 +3,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pizza_app/blocs/authentication_bloc/authentication_bloc.dart';
+import 'package:pizza_app/screens/auth/blocs/forgot_pass/forgot_password_bloc.dart';
 import 'package:pizza_app/screens/auth/blocs/sign_in_bloc/sign_in_bloc.dart';
+import 'package:pizza_app/screens/auth/views/forgot_password_screen.dart';
 import 'package:pizza_app/screens/auth/views/sign_in_screen.dart';
 
 import '../blocs/bloc/sign_up_bloc.dart';
@@ -12,7 +14,7 @@ import 'sign_up_screen.dart';
 class WelcomeScreen extends StatefulWidget  {
   const WelcomeScreen({super.key});
 
-  
+
   @override
   State<WelcomeScreen> createState()=> _WelcomeScreenState();
 }
@@ -23,11 +25,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
   void initState() {
     // TODO: implement initState
     tabController = TabController(
-      initialIndex: 0,
-      length: 2, 
-      vsync: this
-      );
-      super.initState();
+        initialIndex: 0,
+        length: 2,
+        vsync: this
+    );
+    super.initState();
   }
 
   @override
@@ -46,7 +48,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Colors.indigo.shade200,
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -57,7 +59,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
                   width: MediaQuery.of(context).size.width/1.3,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Colors.indigo.shade100,
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -85,43 +87,48 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
                                 style: TextStyle(
                                   fontSize: 18,
                                 ),
-                                ),  
                               ),
-                        
-                        Padding(
-                          padding:EdgeInsets.all(12.0),
-                          child: Text(
-                            'Sign Up',
-                            style: TextStyle(
-                              fontSize: 18,
                             ),
-                          ), 
+
+                            Padding(
+                              padding:EdgeInsets.all(12.0),
+                              child: Text(
+                                'Sign Up',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                    ],
-                    ),
-                  ),
-                  Expanded(
-                    child: TabBarView(
-                      controller: tabController,
-                      children: [
-                        BlocProvider<SignInBloc>(
-                          create: (context) => SignInBloc(
-                            context.read<AuthenticationBloc>().userRepository,
-                          ),
-                          child: const SignInScreen(),
-                          ),
-                          BlocProvider<SignUpBloc>(
-                            create: (context) => SignUpBloc(
-                               context.read<AuthenticationBloc>().userRepository,
-                            ),
-                            child: const SignUpScreen(),
-                          ),
-                        ],
                       ),
-                   ),
-                  ],
+                      Expanded(
+                        child: TabBarView(
+                          controller: tabController,
+                          children: [
+                            BlocProvider<SignInBloc>(
+                              create: (context) => SignInBloc(
+                                context.read<AuthenticationBloc>().userRepository,
+                              ),
+                              child: const SignInScreen(),
+                            ),
+                            BlocProvider<ForgotPasswordBloc>(
+                              create: (context) => ForgotPasswordBloc(), // Không truyền tham số
+                              child: const ForgotPasswordScreen(),
+                            ),
+                            BlocProvider<SignUpBloc>(
+                              create: (context) => SignUpBloc(
+                                context.read<AuthenticationBloc>().userRepository,
+                              ),
+                              child: const SignUpScreen(),
+                            ),
+
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
               ),
             ],
           ),

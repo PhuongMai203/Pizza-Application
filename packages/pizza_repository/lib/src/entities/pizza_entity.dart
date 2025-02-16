@@ -11,6 +11,8 @@ class PizzaEntity {
   final int price;
   final int discount;
   final MacrosEntity macros;
+  final int quantity;
+
 
   PizzaEntity({
     required this.pizzaId,
@@ -22,6 +24,7 @@ class PizzaEntity {
     required this.price,
     required this.discount,
     required this.macros,
+    required this.quantity,
   });
 
   Map<String, Object?> toDocument() {
@@ -35,6 +38,7 @@ class PizzaEntity {
       'price': price,
       'discount': discount,
       'macros': macros.toDocument(),
+      'quantity': quantity,
     };
   }
 
@@ -49,6 +53,9 @@ class PizzaEntity {
       price: doc['price'] ?? 0,
       discount: doc['discount'] ?? 0,
       macros: MacrosEntity.fromDocument(doc['macros'] ?? {}),
+      quantity: doc.containsKey('quantity') && doc['quantity'] is int
+          ? doc['quantity']
+          : 1,
     );
   }
 }

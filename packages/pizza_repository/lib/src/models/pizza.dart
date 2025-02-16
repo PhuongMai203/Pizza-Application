@@ -11,6 +11,7 @@ class Pizza {
   final int price;
   final int discount;
   final Macros macros;
+  final int quantity; // Thêm quantity
 
   Pizza({
     required this.pizzaId,
@@ -22,7 +23,23 @@ class Pizza {
     required this.price,
     required this.discount,
     required this.macros,
+    this.quantity = 1, // Mặc định số lượng là 1
   });
+
+  Pizza copyWith({int? quantity}) {
+    return Pizza(
+      pizzaId: pizzaId,
+      picture: picture,
+      isVeg: isVeg,
+      spicy: spicy,
+      name: name,
+      description: description,
+      price: price,
+      discount: discount,
+      macros: macros,
+      quantity: quantity ?? this.quantity, // Copy quantity
+    );
+  }
 
   PizzaEntity toEntity() {
     return PizzaEntity(
@@ -35,6 +52,7 @@ class Pizza {
       price: price,
       discount: discount,
       macros: macros.toEntity(),
+      quantity: quantity,
     );
   }
 
@@ -49,6 +67,7 @@ class Pizza {
       price: entity.price,
       discount: entity.discount,
       macros: Macros.fromEntity(entity.macros),
+      quantity: entity.quantity, // Lấy quantity từ entity
     );
   }
 }
